@@ -12,6 +12,7 @@
     </header>
     <main>
       <home-page />
+      <robot-builder />
     </main>
     <img alt="Vue logo" src="./assets/logo.png">
     <MiniComponent msg="a passed in msg" />
@@ -21,6 +22,7 @@
 </template>
 
 <script>
+import RobotBuilder from './builder/RobotBuilder.vue';
 import HelloWorld from './components/HelloWorld.vue';
 import HomePage from './components/HomePage.vue';
 import MiniComponent from './components/MiniComponent.vue';
@@ -31,6 +33,7 @@ export default {
     HelloWorld,
     MiniComponent,
     HomePage,
+    RobotBuilder,
   },
 };
 </script>
