@@ -2,33 +2,33 @@
   <div>
     <div class="top-row">
       <div class="top part">
-        <img v-bind:src="availableParts.heads[0].src" title="head"/>
-        <button class="prev-selector">&#9668;</button>
-        <button class="next-selector">&#9658;</button>
+        <img v-bind:src="availableParts.heads[headIndex].src" title="head"/>
+        <button v-on:click="selectHead" class="prev-selector">&#9668;</button>
+        <button v-on:click="selectHead" class="next-selector">&#9658;</button>
       </div>
     </div>
     <div class="middle-row">
       <div class="left part">
-        <img v-bind:src="availableParts.arms[0].src" title="left arm"/>
-        <button class="prev-selector">&#9650;</button>
-        <button class="next-selector">&#9660;</button>
+        <img v-bind:src="availableParts.arms[leftArmIndex].src" title="left arm"/>
+        <button v-on:click="selectLeftArm" class="prev-selector">&#9650;</button>
+        <button v-on:click="selectLeftArm" class="next-selector">&#9660;</button>
       </div>
       <div class="center part">
-        <img v-bind:src="availableParts.torsos[0].src" title="torso"/>
-        <button class="prev-selector">&#9668;</button>
-        <button class="next-selector">&#9658;</button>
+        <img v-bind:src="availableParts.torsos[torsoIndex].src" title="torso"/>
+        <button v-on:click="selectTorso" class="prev-selector">&#9668;</button>
+        <button v-on:click="selectTorso" class="next-selector">&#9658;</button>
       </div>
       <div class="right part">
-        <img v-bind:src="availableParts.arms[0].src" title="right arm"/>
-        <button class="prev-selector">&#9650;</button>
-        <button class="next-selector">&#9660;</button>
+        <img v-bind:src="availableParts.arms[rightArmIndex].src" title="right arm"/>
+        <button v-on:click="selectRightArm" class="prev-selector">&#9650;</button>
+        <button v-on:click="selectRightArm" class="next-selector">&#9660;</button>
       </div>
     </div>
     <div class="bottom-row">
       <div class="bottom part">
-        <img v-bind:src="availableParts.bases[0].src" title="base"/>
-        <button class="prev-selector">&#9668;</button>
-        <button class="next-selector">&#9658;</button>
+        <img v-bind:src="availableParts.bases[baseIndex].src" title="base"/>
+        <button v-on:click="selectBase" class="prev-selector">&#9668;</button>
+        <button v-on:click="selectBase" class="next-selector">&#9658;</button>
       </div>
     </div>
   </div>
@@ -45,7 +45,29 @@ export default {
   data() {
     return {
       availableParts,
+      headIndex: 0,
+      leftArmIndex: 0,
+      torsoIndex: 0,
+      rightArmIndex: 0,
+      baseIndex: 0,
     };
+  },
+  methods: {
+    selectHead() {
+      this.headIndex += 1;
+    },
+    selectLeftArm() {
+      this.leftArmIndex += 1;
+    },
+    selectTorso() {
+      this.torsoIndex += 1;
+    },
+    selectRightArm() {
+      this.rightArmIndex += 1;
+    },
+    selectBase() {
+      this.baseIndex += 1;
+    },
   },
 };
 </script>
