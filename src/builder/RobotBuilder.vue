@@ -57,6 +57,7 @@
 
 <script>
 import availableParts from '../data/parts';
+import lifecycleMixins from '../mixins/lifecycle-mixins';
 
 export default {
   name: 'RobotBuilder',
@@ -74,6 +75,7 @@ export default {
       cart: [],
     };
   },
+  mixins: [lifecycleMixins],
   computed: {
     selectedRobot() {
       return {
@@ -112,6 +114,9 @@ export default {
     selectBase() {
       this.baseIndex += 1;
     },
+  },
+  created() {
+    console.log('zhangle:created()');
   },
 };
 </script>
