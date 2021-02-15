@@ -35,6 +35,23 @@
         <button v-on:click="selectBase" class="next-selector">&#9658;</button>
       </div>
     </div>
+    <div class="cart">
+      <button @click="addToCard()">Add to Cart</button>
+      <table>
+        <thead>
+          <tr>
+            <th>Robot</th>
+            <th>Cost</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(robot, index) in cart" :key="index">
+            <td>{{robot.head.title}}</td>
+            <td>{{robot.cost}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 
@@ -54,6 +71,7 @@ export default {
       torsoIndex: 0,
       rightArmIndex: 0,
       baseIndex: 0,
+      cart: [],
     };
   },
   computed: {
@@ -68,6 +86,17 @@ export default {
     },
   },
   methods: {
+    addToCard() {
+      const robot = this.selectedRobot;
+      const cost = robot.head.cost
+        + robot.leftArm.cost + robot.torso.cost + robot.rightArm.cost
+        + robot.base.cost;
+      // this.cart.push(Object.assign({}, robot, { cost }));
+      const cartRobot = { ...robot, ...{ cost } };
+      console.log(cartRobot);
+      // {head: {…}, leftArm: {…}, torso: {…}, rightArm: {…}, base: {…}, cost: xxx}
+      this.cart.push(cartRobot);
+    },
     selectHead() {
       this.headIndex += 1;
     },
