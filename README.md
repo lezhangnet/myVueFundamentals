@@ -9,6 +9,7 @@ npm install
 ```
 npm run serve
 ```
+then http://localhost:8080/
 
 ### Compiles and minifies for production
 ```
