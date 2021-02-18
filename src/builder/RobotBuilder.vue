@@ -1,19 +1,44 @@
 <template>
   <div>
+    <div class="preview">
+      <div class="preview-content">
+        <div class="top-row">
+          <img :src="selectedRobot.head.src"/>
+        </div>
+        <div class="middle-row">
+          <img :src="selectedRobot.leftArm.src" class="rotate-left"/>
+          <img :src="selectedRobot.torso.src"/>
+          <img :src="selectedRobot.rightArm.src" class="rotate-right"/>
+        </div>
+        <div class="bottom-row">
+          <img :src="selectedRobot.base.src"/>
+        </div>
+      </div>
+    </div>
     <div class="top-row">
       <!-- <div class="robot-name">
         {{selectedRobot.head.title}}
         <span class="sale" v-show="selectedRobot.head.onSale">SALE!</span>
       </div> -->
-      <part-selector position="top" :parts="availableParts.heads"/>
+      <part-selector position="top"
+        :parts="availableParts.heads"
+        @partSelected="part => selectedRobot.head = part"/>
     </div>
     <div class="middle-row">
-      <part-selector position="left" :parts="availableParts.arms"/>
-      <part-selector position="center" :parts="availableParts.torsos"/>
-      <part-selector position="right" :parts="availableParts.arms"/>
+      <part-selector position="left"
+        :parts="availableParts.arms"
+        @partSelected="part => selectedRobot.leftArm = part"/>
+      <part-selector position="center"
+        :parts="availableParts.torsos"
+        @partSelected="part => selectedRobot.torso = part"/>
+      <part-selector position="right"
+        :parts="availableParts.arms"
+        @partSelected="part => selectedRobot.rightArm = part"/>
     </div>
     <div class="bottom-row">
-      <part-selector position="bottom" :parts="availableParts.bases"/>
+      <part-selector position="bottom"
+      :parts="availableParts.bases"
+      @partSelected="part => selectedRobot.base = part"/>
     </div>
     <div class="cart">
       <button @click="addToCard()">Add to Cart</button>
@@ -96,5 +121,25 @@ export default {
 }
 .sale {
   color: red;
+}
+.preview {
+  top: 20px;
+  right: 0;
+  width: 210px;
+  height: 210px;
+  padding: 5px;
+}
+.preview-content {
+  border: 1px solid #999;
+}
+.preview img {
+  width: 50px;
+  height: 50px;
+}
+.rotate-right {
+  transform: rotate(90deg);
+}
+.rotate-left {
+  transform: rotate(-90deg);
 }
 </style>
