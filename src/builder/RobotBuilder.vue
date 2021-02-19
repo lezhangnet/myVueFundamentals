@@ -1,6 +1,8 @@
 <template>
   <div>
     <div class="preview">
+      <collapsible-section/>
+      <collapsible-section>
       <div class="preview-content">
         <div class="top-row">
           <img :src="selectedRobot.head.src"/>
@@ -14,6 +16,7 @@
           <img :src="selectedRobot.base.src"/>
         </div>
       </div>
+      </collapsible-section>
     </div>
     <div class="top-row">
       <!-- <div class="robot-name">
@@ -64,9 +67,10 @@
 import PartSelector from '../components/PartSelector.vue';
 import availableParts from '../data/parts';
 import lifecycleMixins from '../mixins/lifecycle-mixins';
+import CollapsibleSection from '../shared/CollapsibleSection.vue';
 
 export default {
-  components: { PartSelector },
+  components: { PartSelector, CollapsibleSection },
   name: 'RobotBuilder',
   props: {
     msg: String,
